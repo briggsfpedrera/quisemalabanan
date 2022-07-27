@@ -1,0 +1,329 @@
+[16-Jul-2022 00:01:17 UTC] WordPress database error Duplicate column name 'position' for query ALTER TABLE `wp_e_notes` ADD COLUMN `position` text null comment "A JSON string that represents the position of the note inside the element in percentages. e.g. {x:10, y:15}" AFTER `status`; made by do_action('admin_init'), WP_Hook->do_action, WP_Hook->apply_filters, ElementorPro\Core\Database\Base_Database_Updater->ElementorPro\Core\Database\{closure}, ElementorPro\Core\Database\Base_Database_Updater->up, Elementor\Core\Utils\Collection->map, array_map, ElementorPro\Core\Database\Base_Database_Updater->ElementorPro\Core\Database\{closure}, ElementorPro\Modules\Notes\Database\Migrations\Add_Note_Position->up, ElementorPro\Core\Database\Base_Migration->add_columns
+[16-Jul-2022 00:01:17 UTC] WordPress database error Table 'wp_e_submissions' already exists for query CREATE TABLE `wp_e_submissions` (
+			id bigint(20) unsigned auto_increment primary key,
+			type varchar(60) null,
+			hash_id varchar(60) not null,
+			main_meta_id bigint(20) unsigned not null comment 'Id of main field. to represent the main meta field',
+			post_id bigint(20) unsigned not null,
+			referer varchar(500) not null,
+			element_id varchar(20) not null,
+			form_name varchar(60) not null,
+			campaign_id bigint(20) unsigned not null,
+			user_id bigint(20) unsigned null,
+			user_ip varchar(46) not null,
+			user_agent text not null,
+			actions_count INT DEFAULT 0,
+			actions_succeeded_count INT DEFAULT 0,
+			status varchar(20) not null,
+			is_read tinyint(1) default 0 not null,
+			meta text null,
+			created_at_gmt datetime not null,
+			updated_at_gmt datetime not null,
+			created_at datetime not null,
+			updated_at datetime not null
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by do_action('admin_init'), WP_Hook->do_action, WP_Hook->apply_filters, ElementorPro\Modules\Forms\Submissions\Component->ElementorPro\Modules\Forms\Submissions\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migration::install, Elementor\Core\Utils\Collection->map, array_map, ElementorPro\Modules\Forms\Submissions\Database\Migration::ElementorPro\Modules\Forms\Submissions\Database\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->run, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->create_tables, dbDelta
+[16-Jul-2022 00:01:17 UTC] WordPress database error Table 'wp_e_submissions_values' already exists for query CREATE TABLE `wp_e_submissions_values` (
+			id bigint(20) unsigned auto_increment primary key,
+			submission_id bigint(20) unsigned not null default 0,
+			`key` varchar(60) null,
+			value longtext null
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by do_action('admin_init'), WP_Hook->do_action, WP_Hook->apply_filters, ElementorPro\Modules\Forms\Submissions\Component->ElementorPro\Modules\Forms\Submissions\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migration::install, Elementor\Core\Utils\Collection->map, array_map, ElementorPro\Modules\Forms\Submissions\Database\Migration::ElementorPro\Modules\Forms\Submissions\Database\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->run, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->create_tables, dbDelta
+[16-Jul-2022 00:01:17 UTC] WordPress database error Table 'wp_e_submissions_actions_log' already exists for query CREATE TABLE `wp_e_submissions_actions_log` (
+			id bigint(20) unsigned auto_increment primary key,
+			submission_id bigint(20) unsigned not null,
+			action_name varchar(60) not null,
+			action_label varchar(60) null,
+			status varchar(20) not null,
+			log text null,
+			created_at_gmt datetime not null,
+			updated_at_gmt datetime not null,
+			created_at datetime not null,
+			updated_at datetime not null
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by do_action('admin_init'), WP_Hook->do_action, WP_Hook->apply_filters, ElementorPro\Modules\Forms\Submissions\Component->ElementorPro\Modules\Forms\Submissions\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migration::install, Elementor\Core\Utils\Collection->map, array_map, ElementorPro\Modules\Forms\Submissions\Database\Migration::ElementorPro\Modules\Forms\Submissions\Database\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->run, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->create_tables, dbDelta
+[16-Jul-2022 00:01:17 UTC] WordPress database error Duplicate key name 'main_meta_id_index' for query ALTER TABLE `wp_e_submissions`
+    		ADD INDEX `main_meta_id_index` (`main_meta_id`),
+    		ADD UNIQUE INDEX `hash_id_unique_index` (`hash_id`),
+    		ADD INDEX `hash_id_index` (`hash_id`),
+    		ADD INDEX `type_index` (`type`),
+    		ADD INDEX `post_id_index` (`post_id`),
+    		ADD INDEX `element_id_index` (`element_id`),
+    		ADD INDEX `campaign_id_index` (`campaign_id`),
+    		ADD INDEX `user_id_index` (`user_id`),
+    		ADD INDEX `user_ip_index` (`user_ip`),
+    		ADD INDEX `status_index` (`status`),
+    		ADD INDEX `is_read_index` (`is_read`),
+    		ADD INDEX `created_at_gmt_index` (`created_at_gmt`),
+    		ADD INDEX `updated_at_gmt_index` (`updated_at_gmt`),
+    		ADD INDEX `created_at_index` (`created_at`),
+    		ADD INDEX `updated_at_index` (`updated_at`)
+		 made by do_action('admin_init'), WP_Hook->do_action, WP_Hook->apply_filters, ElementorPro\Modules\Forms\Submissions\Component->ElementorPro\Modules\Forms\Submissions\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migration::install, Elementor\Core\Utils\Collection->map, array_map, ElementorPro\Modules\Forms\Submissions\Database\Migration::ElementorPro\Modules\Forms\Submissions\Database\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->run, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->add_indexes
+[16-Jul-2022 00:01:17 UTC] WordPress database error Duplicate key name 'submission_id_index' for query ALTER TABLE `wp_e_submissions_values`
+    		ADD INDEX `submission_id_index` (`submission_id`),
+    		ADD INDEX `key_index` (`key`)
+		 made by do_action('admin_init'), WP_Hook->do_action, WP_Hook->apply_filters, ElementorPro\Modules\Forms\Submissions\Component->ElementorPro\Modules\Forms\Submissions\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migration::install, Elementor\Core\Utils\Collection->map, array_map, ElementorPro\Modules\Forms\Submissions\Database\Migration::ElementorPro\Modules\Forms\Submissions\Database\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->run, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->add_indexes
+[16-Jul-2022 00:01:18 UTC] WordPress database error Duplicate key name 'submission_id_index' for query ALTER TABLE `wp_e_submissions_actions_log`
+    		ADD INDEX `submission_id_index` (`submission_id`),
+    		ADD INDEX `action_name_index` (`action_name`),
+    		ADD INDEX `status_index` (`status`),
+    		ADD INDEX `created_at_gmt_index` (`created_at_gmt`),
+    		ADD INDEX `updated_at_gmt_index` (`updated_at_gmt`),
+    		ADD INDEX `created_at_index` (`created_at`),
+    		ADD INDEX `updated_at_index` (`updated_at`)
+		 made by do_action('admin_init'), WP_Hook->do_action, WP_Hook->apply_filters, ElementorPro\Modules\Forms\Submissions\Component->ElementorPro\Modules\Forms\Submissions\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migration::install, Elementor\Core\Utils\Collection->map, array_map, ElementorPro\Modules\Forms\Submissions\Database\Migration::ElementorPro\Modules\Forms\Submissions\Database\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->run, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Initial->add_indexes
+[16-Jul-2022 00:01:18 UTC] WordPress database error Duplicate column name 'referer_title' for query 
+			ALTER TABLE `wp_e_submissions`
+			ADD COLUMN `referer_title` varchar(300) null AFTER `referer`;
+		 made by do_action('admin_init'), WP_Hook->do_action, WP_Hook->apply_filters, ElementorPro\Modules\Forms\Submissions\Component->ElementorPro\Modules\Forms\Submissions\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migration::install, Elementor\Core\Utils\Collection->map, array_map, ElementorPro\Modules\Forms\Submissions\Database\Migration::ElementorPro\Modules\Forms\Submissions\Database\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Referer_Extra->run
+[16-Jul-2022 00:01:18 UTC] WordPress database error Duplicate key name 'referer_index' for query 
+			ALTER TABLE `wp_e_submissions`
+			ADD INDEX `referer_index` (`referer`(191)),
+			ADD INDEX `referer_title_index` (`referer_title`(191));
+		 made by do_action('admin_init'), WP_Hook->do_action, WP_Hook->apply_filters, ElementorPro\Modules\Forms\Submissions\Component->ElementorPro\Modules\Forms\Submissions\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migration::install, Elementor\Core\Utils\Collection->map, array_map, ElementorPro\Modules\Forms\Submissions\Database\Migration::ElementorPro\Modules\Forms\Submissions\Database\{closure}, ElementorPro\Modules\Forms\Submissions\Database\Migrations\Referer_Extra->run
+[16-Jul-2022 00:50:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function update_meta() on bool in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor-pro\modules\theme-builder\classes\conditions-manager.php:294
+Stack trace:
+#0 C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor-pro\modules\theme-builder\classes\conditions-manager.php(167): ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager->save_conditions(NULL, Array)
+#1 [internal function]: ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager->ajax_save_theme_template_conditions(Array, Object(Elementor\Core\Common\Modules\Ajax\Module))
+#2 C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\common\modules\ajax\module.php(171): call_user_func(Array, Array, Object(Elementor\Core\Common\Modules\Ajax\Module))
+#3 C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php(307): Elementor\Core\Common\Modules\Ajax\Module->handle_ajax_request('')
+#4 C:\Users\ in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor-pro\modules\theme-builder\classes\conditions-manager.php on line 294
+[16-Jul-2022 19:50:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function update_meta() on null in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor-pro\modules\theme-builder\classes\conditions-manager.php:294
+Stack trace:
+#0 C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor-pro\modules\theme-builder\classes\conditions-manager.php(167): ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager->save_conditions(6, Array)
+#1 [internal function]: ElementorPro\Modules\ThemeBuilder\Classes\Conditions_Manager->ajax_save_theme_template_conditions(Array, Object(Elementor\Core\Common\Modules\Ajax\Module))
+#2 C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\common\modules\ajax\module.php(171): call_user_func(Array, Array, Object(Elementor\Core\Common\Modules\Ajax\Module))
+#3 C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php(307): Elementor\Core\Common\Modules\Ajax\Module->handle_ajax_request('')
+#4 C:\Users\bri in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor-pro\modules\theme-builder\classes\conditions-manager.php on line 294
+[16-Jul-2022 20:45:28 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[16-Jul-2022 20:45:28 UTC] PHP Stack trace:
+[16-Jul-2022 20:45:28 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:0
+[16-Jul-2022 20:45:28 UTC] PHP   2. require_once() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:12
+[16-Jul-2022 20:45:28 UTC] PHP   3. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\admin.php:419
+[16-Jul-2022 20:45:28 UTC] PHP   4. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 20:45:28 UTC] PHP   5. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 20:45:28 UTC] PHP   6. Elementor\Core\Editor\Editor->init() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 20:45:28 UTC] PHP   7. Elementor\Core\Editor\Editor->print_editor_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:158
+[16-Jul-2022 20:45:28 UTC] PHP   8. include() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:317
+[16-Jul-2022 20:45:28 UTC] PHP   9. wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\editor-templates\editor-wrapper.php:71
+[16-Jul-2022 20:45:28 UTC] PHP  10. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\general-template.php:3058
+[16-Jul-2022 20:45:28 UTC] PHP  11. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 20:45:28 UTC] PHP  12. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 20:45:28 UTC] PHP  13. Elementor\Core\Editor\Editor->wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 20:45:28 UTC] PHP  14. Elementor\Widgets_Manager->render_widgets_content() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:822
+[16-Jul-2022 20:45:28 UTC] PHP  15. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->print_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\managers\widgets.php:447
+[16-Jul-2022 20:45:28 UTC] PHP  16. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->content_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\base\controls-stack.php:1953
+[16-Jul-2022 20:45:28 UTC] PHP  17. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider.php:62
+[16-Jul-2022 22:05:12 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[16-Jul-2022 22:05:12 UTC] PHP Stack trace:
+[16-Jul-2022 22:05:12 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:0
+[16-Jul-2022 22:05:12 UTC] PHP   2. require_once() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:12
+[16-Jul-2022 22:05:12 UTC] PHP   3. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\admin.php:419
+[16-Jul-2022 22:05:12 UTC] PHP   4. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 22:05:12 UTC] PHP   5. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 22:05:12 UTC] PHP   6. Elementor\Core\Editor\Editor->init() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 22:05:12 UTC] PHP   7. Elementor\Core\Editor\Editor->print_editor_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:158
+[16-Jul-2022 22:05:12 UTC] PHP   8. include() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:317
+[16-Jul-2022 22:05:12 UTC] PHP   9. wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\editor-templates\editor-wrapper.php:71
+[16-Jul-2022 22:05:12 UTC] PHP  10. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\general-template.php:3058
+[16-Jul-2022 22:05:12 UTC] PHP  11. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 22:05:12 UTC] PHP  12. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 22:05:12 UTC] PHP  13. Elementor\Core\Editor\Editor->wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 22:05:12 UTC] PHP  14. Elementor\Widgets_Manager->render_widgets_content() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:822
+[16-Jul-2022 22:05:12 UTC] PHP  15. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->print_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\managers\widgets.php:447
+[16-Jul-2022 22:05:12 UTC] PHP  16. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->content_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\base\controls-stack.php:1953
+[16-Jul-2022 22:05:12 UTC] PHP  17. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider.php:62
+[16-Jul-2022 22:08:27 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[16-Jul-2022 22:08:27 UTC] PHP Stack trace:
+[16-Jul-2022 22:08:27 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:0
+[16-Jul-2022 22:08:27 UTC] PHP   2. require_once() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:12
+[16-Jul-2022 22:08:27 UTC] PHP   3. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\admin.php:419
+[16-Jul-2022 22:08:27 UTC] PHP   4. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 22:08:27 UTC] PHP   5. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 22:08:27 UTC] PHP   6. Elementor\Core\Editor\Editor->init() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 22:08:27 UTC] PHP   7. Elementor\Core\Editor\Editor->print_editor_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:158
+[16-Jul-2022 22:08:27 UTC] PHP   8. include() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:317
+[16-Jul-2022 22:08:27 UTC] PHP   9. wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\editor-templates\editor-wrapper.php:71
+[16-Jul-2022 22:08:27 UTC] PHP  10. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\general-template.php:3058
+[16-Jul-2022 22:08:27 UTC] PHP  11. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 22:08:27 UTC] PHP  12. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 22:08:27 UTC] PHP  13. Elementor\Core\Editor\Editor->wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 22:08:27 UTC] PHP  14. Elementor\Widgets_Manager->render_widgets_content() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:822
+[16-Jul-2022 22:08:27 UTC] PHP  15. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->print_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\managers\widgets.php:447
+[16-Jul-2022 22:08:27 UTC] PHP  16. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->content_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\base\controls-stack.php:1953
+[16-Jul-2022 22:08:27 UTC] PHP  17. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider.php:62
+[16-Jul-2022 22:08:57 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[16-Jul-2022 22:08:57 UTC] PHP Stack trace:
+[16-Jul-2022 22:08:57 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:0
+[16-Jul-2022 22:08:57 UTC] PHP   2. require_once() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:12
+[16-Jul-2022 22:08:57 UTC] PHP   3. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\admin.php:419
+[16-Jul-2022 22:08:57 UTC] PHP   4. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 22:08:57 UTC] PHP   5. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 22:08:57 UTC] PHP   6. Elementor\Core\Editor\Editor->init() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 22:08:57 UTC] PHP   7. Elementor\Core\Editor\Editor->print_editor_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:158
+[16-Jul-2022 22:08:57 UTC] PHP   8. include() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:317
+[16-Jul-2022 22:08:57 UTC] PHP   9. wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\editor-templates\editor-wrapper.php:71
+[16-Jul-2022 22:08:57 UTC] PHP  10. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\general-template.php:3058
+[16-Jul-2022 22:08:57 UTC] PHP  11. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 22:08:57 UTC] PHP  12. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 22:08:57 UTC] PHP  13. Elementor\Core\Editor\Editor->wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 22:08:57 UTC] PHP  14. Elementor\Widgets_Manager->render_widgets_content() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:822
+[16-Jul-2022 22:08:57 UTC] PHP  15. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->print_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\managers\widgets.php:447
+[16-Jul-2022 22:08:57 UTC] PHP  16. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->content_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\base\controls-stack.php:1953
+[16-Jul-2022 22:08:57 UTC] PHP  17. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider.php:62
+[16-Jul-2022 22:19:36 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[16-Jul-2022 22:19:36 UTC] PHP Stack trace:
+[16-Jul-2022 22:19:36 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\customize.php:0
+[16-Jul-2022 22:19:36 UTC] PHP   2. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\customize.php:123
+[16-Jul-2022 22:19:36 UTC] PHP   3. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 22:19:36 UTC] PHP   4. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 22:19:36 UTC] PHP   5. WP_Customize_Widgets->enqueue_scripts() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 22:19:36 UTC] PHP   6. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-customize-widgets.php:878
+[16-Jul-2022 22:19:36 UTC] PHP   7. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 22:19:36 UTC] PHP   8. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 22:19:36 UTC] PHP   9. Nextend\SmartSlider3\Platform\WordPress\Integration\Gutenberg\Gutenberg->enqueue_block_editor_assets() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 22:19:36 UTC] PHP  10. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Gutenberg\Gutenberg.php:55
+[16-Jul-2022 22:20:36 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[16-Jul-2022 22:20:36 UTC] PHP Stack trace:
+[16-Jul-2022 22:20:36 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:0
+[16-Jul-2022 22:20:36 UTC] PHP   2. require_once() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:12
+[16-Jul-2022 22:20:36 UTC] PHP   3. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\admin.php:419
+[16-Jul-2022 22:20:36 UTC] PHP   4. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 22:20:36 UTC] PHP   5. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 22:20:36 UTC] PHP   6. Elementor\Core\Editor\Editor->init() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 22:20:36 UTC] PHP   7. Elementor\Core\Editor\Editor->print_editor_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:158
+[16-Jul-2022 22:20:36 UTC] PHP   8. include() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:317
+[16-Jul-2022 22:20:36 UTC] PHP   9. wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\editor-templates\editor-wrapper.php:71
+[16-Jul-2022 22:20:36 UTC] PHP  10. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\general-template.php:3058
+[16-Jul-2022 22:20:36 UTC] PHP  11. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[16-Jul-2022 22:20:36 UTC] PHP  12. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[16-Jul-2022 22:20:36 UTC] PHP  13. Elementor\Core\Editor\Editor->wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[16-Jul-2022 22:20:36 UTC] PHP  14. Elementor\Widgets_Manager->render_widgets_content() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:822
+[16-Jul-2022 22:20:36 UTC] PHP  15. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->print_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\managers\widgets.php:447
+[16-Jul-2022 22:20:36 UTC] PHP  16. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->content_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\base\controls-stack.php:1953
+[16-Jul-2022 22:20:36 UTC] PHP  17. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider.php:62
+[19-Jul-2022 22:02:46 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[19-Jul-2022 22:02:46 UTC] PHP Stack trace:
+[19-Jul-2022 22:02:46 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:0
+[19-Jul-2022 22:02:46 UTC] PHP   2. require_once() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:12
+[19-Jul-2022 22:02:46 UTC] PHP   3. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\admin.php:419
+[19-Jul-2022 22:02:46 UTC] PHP   4. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[19-Jul-2022 22:02:46 UTC] PHP   5. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[19-Jul-2022 22:02:46 UTC] PHP   6. Elementor\Core\Editor\Editor->init() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[19-Jul-2022 22:02:46 UTC] PHP   7. Elementor\Core\Editor\Editor->print_editor_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:158
+[19-Jul-2022 22:02:46 UTC] PHP   8. include() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:317
+[19-Jul-2022 22:02:46 UTC] PHP   9. wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\editor-templates\editor-wrapper.php:71
+[19-Jul-2022 22:02:46 UTC] PHP  10. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\general-template.php:3058
+[19-Jul-2022 22:02:46 UTC] PHP  11. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[19-Jul-2022 22:02:46 UTC] PHP  12. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[19-Jul-2022 22:02:46 UTC] PHP  13. Elementor\Core\Editor\Editor->wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[19-Jul-2022 22:02:46 UTC] PHP  14. Elementor\Widgets_Manager->render_widgets_content() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:822
+[19-Jul-2022 22:02:46 UTC] PHP  15. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->print_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\managers\widgets.php:447
+[19-Jul-2022 22:02:46 UTC] PHP  16. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->content_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\base\controls-stack.php:1953
+[19-Jul-2022 22:02:46 UTC] PHP  17. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider.php:62
+[20-Jul-2022 00:00:40 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[20-Jul-2022 00:00:40 UTC] PHP Stack trace:
+[20-Jul-2022 00:00:40 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\customize.php:0
+[20-Jul-2022 00:00:40 UTC] PHP   2. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\customize.php:123
+[20-Jul-2022 00:00:40 UTC] PHP   3. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[20-Jul-2022 00:00:40 UTC] PHP   4. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[20-Jul-2022 00:00:40 UTC] PHP   5. WP_Customize_Widgets->enqueue_scripts() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[20-Jul-2022 00:00:40 UTC] PHP   6. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-customize-widgets.php:878
+[20-Jul-2022 00:00:40 UTC] PHP   7. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[20-Jul-2022 00:00:40 UTC] PHP   8. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[20-Jul-2022 00:00:40 UTC] PHP   9. Nextend\SmartSlider3\Platform\WordPress\Integration\Gutenberg\Gutenberg->enqueue_block_editor_assets() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[20-Jul-2022 00:00:40 UTC] PHP  10. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Gutenberg\Gutenberg.php:55
+[20-Jul-2022 00:02:37 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[20-Jul-2022 00:02:37 UTC] PHP Stack trace:
+[20-Jul-2022 00:02:37 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\customize.php:0
+[20-Jul-2022 00:02:37 UTC] PHP   2. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\customize.php:123
+[20-Jul-2022 00:02:37 UTC] PHP   3. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[20-Jul-2022 00:02:37 UTC] PHP   4. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[20-Jul-2022 00:02:37 UTC] PHP   5. WP_Customize_Widgets->enqueue_scripts() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[20-Jul-2022 00:02:37 UTC] PHP   6. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-customize-widgets.php:878
+[20-Jul-2022 00:02:37 UTC] PHP   7. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[20-Jul-2022 00:02:37 UTC] PHP   8. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[20-Jul-2022 00:02:37 UTC] PHP   9. Nextend\SmartSlider3\Platform\WordPress\Integration\Gutenberg\Gutenberg->enqueue_block_editor_assets() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[20-Jul-2022 00:02:37 UTC] PHP  10. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Gutenberg\Gutenberg.php:55
+[27-Jul-2022 01:30:33 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[27-Jul-2022 01:30:33 UTC] PHP Stack trace:
+[27-Jul-2022 01:30:33 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:0
+[27-Jul-2022 01:30:33 UTC] PHP   2. require_once() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:12
+[27-Jul-2022 01:30:33 UTC] PHP   3. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\admin.php:419
+[27-Jul-2022 01:30:33 UTC] PHP   4. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[27-Jul-2022 01:30:33 UTC] PHP   5. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[27-Jul-2022 01:30:33 UTC] PHP   6. Elementor\Core\Editor\Editor->init() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[27-Jul-2022 01:30:33 UTC] PHP   7. Elementor\Core\Editor\Editor->print_editor_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:158
+[27-Jul-2022 01:30:33 UTC] PHP   8. include() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:317
+[27-Jul-2022 01:30:33 UTC] PHP   9. wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\editor-templates\editor-wrapper.php:71
+[27-Jul-2022 01:30:33 UTC] PHP  10. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\general-template.php:3058
+[27-Jul-2022 01:30:33 UTC] PHP  11. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[27-Jul-2022 01:30:33 UTC] PHP  12. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[27-Jul-2022 01:30:33 UTC] PHP  13. Elementor\Core\Editor\Editor->wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[27-Jul-2022 01:30:33 UTC] PHP  14. Elementor\Widgets_Manager->render_widgets_content() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:822
+[27-Jul-2022 01:30:33 UTC] PHP  15. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->print_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\managers\widgets.php:447
+[27-Jul-2022 01:30:33 UTC] PHP  16. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->content_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\base\controls-stack.php:1953
+[27-Jul-2022 01:30:33 UTC] PHP  17. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider.php:62
+[27-Jul-2022 01:30:39 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[27-Jul-2022 01:30:39 UTC] PHP Stack trace:
+[27-Jul-2022 01:30:39 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:0
+[27-Jul-2022 01:30:39 UTC] PHP   2. require_once() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:12
+[27-Jul-2022 01:30:39 UTC] PHP   3. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\admin.php:419
+[27-Jul-2022 01:30:39 UTC] PHP   4. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[27-Jul-2022 01:30:39 UTC] PHP   5. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[27-Jul-2022 01:30:39 UTC] PHP   6. Elementor\Core\Editor\Editor->init() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[27-Jul-2022 01:30:39 UTC] PHP   7. Elementor\Core\Editor\Editor->print_editor_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:158
+[27-Jul-2022 01:30:39 UTC] PHP   8. include() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:317
+[27-Jul-2022 01:30:39 UTC] PHP   9. wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\editor-templates\editor-wrapper.php:71
+[27-Jul-2022 01:30:39 UTC] PHP  10. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\general-template.php:3058
+[27-Jul-2022 01:30:39 UTC] PHP  11. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[27-Jul-2022 01:30:39 UTC] PHP  12. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[27-Jul-2022 01:30:39 UTC] PHP  13. Elementor\Core\Editor\Editor->wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[27-Jul-2022 01:30:39 UTC] PHP  14. Elementor\Widgets_Manager->render_widgets_content() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:822
+[27-Jul-2022 01:30:39 UTC] PHP  15. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->print_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\managers\widgets.php:447
+[27-Jul-2022 01:30:39 UTC] PHP  16. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->content_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\base\controls-stack.php:1953
+[27-Jul-2022 01:30:39 UTC] PHP  17. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider.php:62
+[27-Jul-2022 01:31:55 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[27-Jul-2022 01:31:55 UTC] PHP Stack trace:
+[27-Jul-2022 01:31:55 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:0
+[27-Jul-2022 01:31:55 UTC] PHP   2. require_once() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:12
+[27-Jul-2022 01:31:55 UTC] PHP   3. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\admin.php:419
+[27-Jul-2022 01:31:55 UTC] PHP   4. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[27-Jul-2022 01:31:55 UTC] PHP   5. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[27-Jul-2022 01:31:55 UTC] PHP   6. Elementor\Core\Editor\Editor->init() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[27-Jul-2022 01:31:55 UTC] PHP   7. Elementor\Core\Editor\Editor->print_editor_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:158
+[27-Jul-2022 01:31:55 UTC] PHP   8. include() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:317
+[27-Jul-2022 01:31:55 UTC] PHP   9. wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\editor-templates\editor-wrapper.php:71
+[27-Jul-2022 01:31:55 UTC] PHP  10. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\general-template.php:3058
+[27-Jul-2022 01:31:55 UTC] PHP  11. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[27-Jul-2022 01:31:55 UTC] PHP  12. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[27-Jul-2022 01:31:55 UTC] PHP  13. Elementor\Core\Editor\Editor->wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[27-Jul-2022 01:31:55 UTC] PHP  14. Elementor\Widgets_Manager->render_widgets_content() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:822
+[27-Jul-2022 01:31:55 UTC] PHP  15. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->print_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\managers\widgets.php:447
+[27-Jul-2022 01:31:55 UTC] PHP  16. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->content_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\base\controls-stack.php:1953
+[27-Jul-2022 01:31:55 UTC] PHP  17. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider.php:62
+[27-Jul-2022 01:34:31 UTC] PHP Warning:  Use of undefined constant NONCE_SALT - assumed 'NONCE_SALT' (this will throw an Error in a future version of PHP) in C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode.php on line 248
+[27-Jul-2022 01:34:31 UTC] PHP Stack trace:
+[27-Jul-2022 01:34:31 UTC] PHP   1. {main}() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:0
+[27-Jul-2022 01:34:31 UTC] PHP   2. require_once() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\post.php:12
+[27-Jul-2022 01:34:31 UTC] PHP   3. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-admin\admin.php:419
+[27-Jul-2022 01:34:31 UTC] PHP   4. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[27-Jul-2022 01:34:31 UTC] PHP   5. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[27-Jul-2022 01:34:31 UTC] PHP   6. Elementor\Core\Editor\Editor->init() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[27-Jul-2022 01:34:31 UTC] PHP   7. Elementor\Core\Editor\Editor->print_editor_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:158
+[27-Jul-2022 01:34:31 UTC] PHP   8. include() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:317
+[27-Jul-2022 01:34:31 UTC] PHP   9. wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\editor-templates\editor-wrapper.php:71
+[27-Jul-2022 01:34:31 UTC] PHP  10. do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\general-template.php:3058
+[27-Jul-2022 01:34:31 UTC] PHP  11. WP_Hook->do_action() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\plugin.php:476
+[27-Jul-2022 01:34:31 UTC] PHP  12. WP_Hook->apply_filters() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:331
+[27-Jul-2022 01:34:31 UTC] PHP  13. Elementor\Core\Editor\Editor->wp_footer() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-includes\class-wp-hook.php:307
+[27-Jul-2022 01:34:31 UTC] PHP  14. Elementor\Widgets_Manager->render_widgets_content() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\core\editor\editor.php:822
+[27-Jul-2022 01:34:31 UTC] PHP  15. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->print_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\managers\widgets.php:447
+[27-Jul-2022 01:34:31 UTC] PHP  16. Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider->content_template() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\elementor\includes\base\controls-stack.php:1953
+[27-Jul-2022 01:34:31 UTC] PHP  17. Nextend\SmartSlider3\Platform\WordPress\Shortcode\Shortcode::renderIframe() C:\Users\brigg\Local Sites\quise-malabanan\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Platform\WordPress\Integration\Elementor\ElementorWidgetSmartSlider.php:62
+[27-Jul-2022 01:42:50 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'php_imagick.dll' (tried: C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_imagick.dll (The specified module could not be found.), C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_php_imagick.dll.dll (The specified module could not be found.)) in Unknown on line 0
+[27-Jul-2022 01:42:50 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'php_imagick.dll' (tried: C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_imagick.dll (The specified module could not be found.), C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_php_imagick.dll.dll (The specified module could not be found.)) in Unknown on line 0
+[27-Jul-2022 01:42:51 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'php_imagick.dll' (tried: C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_imagick.dll (The specified module could not be found.), C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_php_imagick.dll.dll (The specified module could not be found.)) in Unknown on line 0
+[27-Jul-2022 01:42:51 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'php_imagick.dll' (tried: C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_imagick.dll (The specified module could not be found.), C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_php_imagick.dll.dll (The specified module could not be found.)) in Unknown on line 0
+[27-Jul-2022 01:58:26 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'php_imagick.dll' (tried: C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_imagick.dll (The specified module could not be found.), C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_php_imagick.dll.dll (The specified module could not be found.)) in Unknown on line 0
+[27-Jul-2022 01:58:27 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'php_imagick.dll' (tried: C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_imagick.dll (The specified module could not be found.), C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_php_imagick.dll.dll (The specified module could not be found.)) in Unknown on line 0
+[27-Jul-2022 01:58:27 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'php_imagick.dll' (tried: C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_imagick.dll (The specified module could not be found.), C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_php_imagick.dll.dll (The specified module could not be found.)) in Unknown on line 0
+[27-Jul-2022 01:58:27 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'php_imagick.dll' (tried: C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_imagick.dll (The specified module could not be found.), C:/Users/brigg/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-7.4.1+18/bin/win64/ext\php_php_imagick.dll.dll (The specified module could not be found.)) in Unknown on line 0
